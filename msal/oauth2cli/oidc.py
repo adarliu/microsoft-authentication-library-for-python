@@ -171,7 +171,7 @@ class Client(oauth2.Client):
         See :func:`oauth2.Client.initiate_auth_code_flow` in parent class
         for descriptions on other parameters and return value.
         """
-        if "id_token" in kwargs.get("response_type", ""):
+        if "id_token" in kwargs.get("response_type", "") and kwargs.get("response_mode", "") != "form_post":
             # Implicit grant would cause auth response coming back in #fragment,
             # but fragment won't reach a web service.
             raise ValueError('response_type="id_token ..." is not allowed')

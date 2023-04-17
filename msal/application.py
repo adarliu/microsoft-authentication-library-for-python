@@ -730,6 +730,7 @@ class ClientApplication(object):
             claims_challenge=None,
             max_age=None,
             response_mode=None,  # type: Optional[str]
+            response_type='code',
             ):
         """Initiate an auth code flow.
 
@@ -816,6 +817,7 @@ class ClientApplication(object):
                 self._client_capabilities, claims_challenge),
             max_age=max_age,
             response_mode=response_mode,
+            response_type=response_type,
             )
         flow["claims_challenge"] = claims_challenge
         return flow

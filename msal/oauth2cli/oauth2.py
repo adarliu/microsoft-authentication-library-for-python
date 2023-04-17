@@ -467,7 +467,7 @@ class Client(BaseClient):  # We choose to implement all 4 grants in 1 class
             # It could theoretically be other
             # (possibly space-delimited) strings as registered extension value.
             # See https://tools.ietf.org/html/rfc6749#section-3.1.1
-        if "token" in response_type:
+        if "token" in response_type and kwargs.get("response_mode", "") != "form_post":
             # Implicit grant would cause auth response coming back in #fragment,
             # but fragment won't reach a web service.
             raise ValueError('response_type="token ..." is not allowed')
